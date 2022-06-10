@@ -34,7 +34,7 @@ This file uses Ruby 2.3 or any higher version of the language. It also need the 
     
 Back End:
 
-The different functions that are used with the multiple databases and give the proper functionality to the front-end are mounted in AWS Lambda Functions. These are configured in Ruby version 2.5
+The different functions that are used with the multiple databases and give the proper functionality to the front-end are mounted in AWS Lambda Functions. These are configured in Ruby version 2.7
 in their base environment. These functions have service keys that are modeled using the RESTful API that takes requests and responses JSON files. 
 
 == 4+1 Architectural View Model
@@ -43,7 +43,7 @@ in their base environment. These functions have service keys that are modeled us
 
 The lambda functions can represented as Objects in an UML diagram. The reason we do this is because there is no better way to represent them. All these clases are not dependant of each other and are equally important.
 
-rdoc-image:img/LambdaFunctions.png
+rdoc-image:img/LambdaFunctionsimg.png
 
 === Development View
 
@@ -57,7 +57,7 @@ rdoc-image:img/DevelopmentView.png
 
 In this diagram it shows the different processes that the lambda functions can do. This is all done by the middle man.
 
-rdoc-image:img/ProcessView.png
+rdoc-image:img/procesView.drawio.png
 
 === Physical View
 
@@ -70,7 +70,7 @@ rdoc-image:img/PhysicalView.png
 
 This diagram shows that the user is able to intereact with the system in three ways. The user doesn't need any third parties to interact with the application:
 
-rdoc-image:img/Scenarios.png
+rdoc-image:img/scenario.drawio.png
 
 == Patterns Used
  - <b>Domain-Specific Language</b>: The +lambdaCaller.rb+ file is a web application with different routes
