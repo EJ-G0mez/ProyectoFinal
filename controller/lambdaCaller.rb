@@ -1,7 +1,7 @@
 # Final Project: Quiz Application with Microservices
 # Date: 10-06-2022
 # Authors: A01375669 Jose Luis Hernandez Soriano
-#          A0
+#          A01377235 Emiliano Javier Gómez Jiménez
 
 require 'faraday'
 require 'json'
