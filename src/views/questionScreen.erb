@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html"; charset="UTF'8">
+        <title>Quizmaster: Question </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <style>
+            body{
+                background-color: #38BEFF;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                color: azure;
+            }
+            h1{
+                margin-top: 10%;
+                margin-left: 35%;
+                margin-bottom: 3%;
+                font-size:300%;
+            }
+            h2{
+                margin-left: 10%;
+                margin-bottom: 5%;
+            }
+            h3{
+                margin-bottom: 3%;
+            }
+            #answers{
+                margin-left: 30%;
+                margin-top: 10%;
+                flex-wrap: wrap;
+                font-size: large;
+            }
+            #option{
+                margin-bottom: 5%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Question !</h1>
+            <h2>What is the square root of 1?</h2>
+        </div>
+        <div id="answers">
+            <div class="form-check" id="option">
+                <input class="form-check-input" type="radio" name="a" id = "a">
+                <label class="form-check-label" for="a">1</label>
+            </div>
+            <div class="form-check" id="option">
+                <input class="form-check-input" type="radio" name="b" id = "b">
+                <label class="form-check-label" for="b">-1</label>
+            </div>
+            <div class="form-check" id="option">
+                <input class="form-check-input" type="radio" name="c" id = "c">
+                <label class="form-check-label" for="c">0</label>
+            </div>
+            <div class="form-check" id="option">
+                <input class="form-check-input" type="radio" name="d" id = "d">
+                <label class="form-check-label" for="d">2</label>
+            </div>
+            <div class="form-check" id="option">
+                <input class="form-check-input" type="radio" name="e" id = "e">
+                <label class="form-check-label" for="e">No Answer</label>
+            </div>
+            <div style="margin-top: 15%;">
+                <button class ="btn btn-secondary" type ="submit" id="submit button"> Check</button>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </body>
+</html>

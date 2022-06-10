@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+<head>
+<title>README.rdoc</title>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<link href='../css/style.css' media='screen' rel='stylesheet' type='text/css'>
+<script type='text/javascript'>
+  function popupCode(url) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+  
+  function toggleCode(id) {
+    var code = document.getElementById(id)
+  
+    code.style.display = code.style.display != 'block' ? 'block' : 'none'
+    return true
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+</script>
+</head>
+<body class='page'>
+<div class='file' id='wrapper'>
+<div class='header'>
+<h1 class='name'>README.rdoc
+</h1>
+<div class='paths'>
+README.rdoc
+</div>
+<div class='last-update'>
+Last Update:
+<span class='datetime'>2022-06-10 17:03:25 +0000</span>
+</div>
+</div>
+<div id='content'>
+<div id='text'>
+<div id='description'>
+<h1 id="label-Application+Design+and+Architecture">Application Design and Architecture<span><a href="#label-Application+Design+and+Architecture">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<table class="rdoc-list note-list"><tbody><tr><td class='label'>Authors</td><td>
+<p>Jose Luis Hernández Soto, Emiliano Javier Gómez Jiménez</p>
+</td></tr><tr><td class='label'>Date</td><td>
+<p>June 10, 2022</p>
+</td></tr></tbody></table>
+
+<h2 id="label-Overview+of+the+Project">Overview of the Project<span><a href="#label-Overview+of+the+Project">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The structure of this project is at follows.</p>
+
+<pre>quiz/
+      ├─ doc/                        Folder produced by RDoc.
+      ├─ dsl/                        Folder for the DSL Sinatra model
+      ├─ img/                        Folder for the images used in the README Rdoc.
+      ├─ Lambdas/                    Folder for the functions that will use the Lambda feature in AWS.
+      └─ src/                        Folder for the application’s source code.
+           └─ views/                 Folder for the server that is in charge of calling the Lambda func</pre>
+
+<p>For this application the original plan was to divide into 3 parts using the MVC model. The model or back-end is a group of lambda functios created in AWS that  send various data to different DynamoDB databases. The Controller or middle-man is built using Sinatra and communicates with the Lambda Functions that are in the AWS. The View or Front-End is a group of erb files that display an interface to the user.</p>
+
+<h2 id="label-Installing+and+Running+the+Application">Installing and Running the Application<span><a href="#label-Installing+and+Running+the+Application">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Front-End: The applicationis supposed to use both Bootstrap and Sinatra to generate a graphic interface. If it were functionalyou would need to install it&#39;s dependencies with npm:</p>
+
+<pre>$ npm install.</pre>
+
+<p>Middle-Man:</p>
+
+<p>This file uses Ruby 2.3 or any higher version of the language. It also need the Sinatra gem installed. To run this server instance we need to run the command:</p>
+
+<pre>$ ruby -I . -w /dsl/lambdaCaller.rb</pre>
+
+<p>Back End:</p>
+
+<p>The different functions that are used with the multiple databases and give the proper functionality to the front-end are mounted in AWS Lambda Functions. These are configured in Ruby version 2.5 in their base environment. These functions have service keys that are modeled using the RESTful API that takes requests and responses JSON files. </p>
+
+<h2 id="label-4-2B1+Architectural+View+Model">4+1 Architectural View Model<span><a href="#label-4-2B1+Architectural+View+Model">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Logical+View">Logical View<span><a href="#label-Logical+View">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>The lambda functions can represented as Objects in an UML diagram. The reason we do this is because there is no better way to represent them. All these clases are not dependant of each other and are equally important.</p>
+
+<p><img src="img/LambdaFunctions.png"></p>
+
+<h3 id="label-Development+View">Development View<span><a href="#label-Development+View">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>In this view we separated both the back-end and the front-end . In the front-end we can change the url to the ones in the lambda functions and should in theory work. The middle man is placed in the back-end to protect the lambda functions from unwanted access.</p>
+
+<p><img src="img/DevelopmentView.png"></p>
+
+<h3 id="label-Process+View">Process View<span><a href="#label-Process+View">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>In this diagram it shows the different processes that the lambda functions can do. This is all done by the middle man.</p>
+
+<p><img src="img/ProcessView.png"></p>
+
+<h3 id="label-Physical+View">Physical View<span><a href="#label-Physical+View">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>In this view we see the multiple technologies used in the application.  AWS being the main service with both Lambda and DynamoDB that are needed to run the project. Although in the Front-end of the project a service called Bootstrap is used to help with the design of the interfaces.</p>
+
+<p><img src="img/PhysicalView.png"></p>
+
+<h3 id="label-Scenarios">Scenarios<span><a href="#label-Scenarios">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>This diagram shows that the user is able to intereact with the system in three ways. The user doesn&#39;t need any third parties to interact with the application:</p>
+
+<p><img src="img/Scenarios.png"></p>
+
+<h2 id="label-Patterns+Used">Patterns Used<span><a href="#label-Patterns+Used">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre>- &lt;b&gt;Domain-Specific Language&lt;/b&gt;: The +lambdaCaller.rb+ file is a web application with different routes
+- &lt;b&gt;Model View Controller&lt;/b&gt;: The applications follows a basic MVC Architecture like any web application
+- &lt;b&gt;Microservices&lt;/b&gt;: The main basis of this project were microservices.</pre>
+
+<h2 id="label-References">References<span><a href="#label-References">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre>- \R Olsen. &lt;em&gt;Desing Patterns in Ruby&lt;/em&gt; Addison-Wesley, 2007
+- \J Fields. &lt;em&gt;Refactoring with Ruby&lt;/em&gt; Addison-Wesley, 2009
+- SourceMaking.com &lt;em&gt;Desing Patterns&lt;/em&gt; {https://sourcemaking.com/design_patterns}, Accesed June, 2022
+- SourceMaking.com &lt;em&gt;AntiPatterns&lt;/em&gt; {https://sourcemaking.com/antipatterns}, Accesed June, 2022</pre>
+</div>
+<div id='context'>
+</div>
+
+</div>
+</div>
+
+<div id='footer-push'></div>
+</div>
+<div id='footer'>
+<a href="https://github.com/jeremyevans/hanna-nouveau"><strong>Hanna Nouveau</strong> RDoc template</a>
+</div>
+</body>
+</html>
